@@ -1,0 +1,160 @@
+specVersion: 0.0.2
+schema:
+    file: ./schema.graphql
+dataSources:
+    - kind: ethereum/contract
+      name: MarsmelloGame
+      network: theta
+      source:
+          address: "0x2a9FDf854b850381ed1E41D99FC275c4d4777595"
+          abi: MarsmelloGame
+          startBlock: 13444363
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.4
+          language: wasm/assemblyscript
+          entities:
+              - User
+              - Land
+              - Factory
+          abis:
+              - name: MarsmelloGame
+                file: ./build/contracts/MarsmelloGame.json
+          eventHandlers:
+              - event: LandE(indexed int32,indexed int32,indexed address,uint64,uint128)
+                handler: handleLand
+              - event: FactoryE(indexed uint64,address,uint16,uint16,indexed int32,indexed int32,string)
+                handler: handleFactory
+              - event: FactoryNameChange(indexed uint64,string)
+                handler: handleFactoryNameChange
+              - event: Claim(indexed address,uint256)
+                handler: handleClaim
+              - event: FlowChange(indexed address,uint128[],uint64)
+                handler: handleFlowChange
+          file: ./src/marsmellogame.ts
+    - kind: ethereum/contract
+      name: Marsmello
+      network: theta
+      source:
+          address: "0x48637CfE9113520fb06b433bC990D8E68CFA6834"
+          abi: Marsmello
+          startBlock: 13444363
+        #   startBlock: 0
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.4
+          language: wasm/assemblyscript
+          entities:
+              - User
+          abis:
+              - name: Marsmello
+                file: ./build/contracts/Marsmello.json
+          eventHandlers:
+              - event: Transfer(indexed address,indexed address,uint256)
+                handler: handleTransfer
+          file: ./src/marsmello.ts
+    - kind: ethereum/contract
+      name: Iron
+      network: theta
+      source:
+          address: "0x6193c11966D9922db1066F906059D17768C0c214"
+          abi: Iron
+          startBlock: 13444363
+        #   startBlock: 0
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.4
+          language: wasm/assemblyscript
+          entities:
+              - User
+          abis:
+              - name: Iron
+                file: ./build/contracts/Iron.json
+          eventHandlers:
+              - event: Transfer(indexed address,indexed address,uint256)
+                handler: handleTransfer
+          file: ./src/iron.ts
+    - kind: ethereum/contract
+      name: Aluminium
+      network: theta
+      source:
+          address: "0xda9723F706880c0fFc1E4c31cb0F1Ce6aA8b5F8c"
+          abi: Aluminium
+          startBlock: 13444363
+        #   startBlock: 0
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.4
+          language: wasm/assemblyscript
+          entities:
+              - User
+          abis:
+              - name: Aluminium
+                file: ./build/contracts/Aluminium.json
+          eventHandlers:
+              - event: Transfer(indexed address,indexed address,uint256)
+                handler: handleTransfer
+          file: ./src/aluminium.ts
+    - kind: ethereum/contract
+      name: Copper
+      network: theta
+      source:
+          address: "0x53444ED9D1De870619312b41FC4d41d710dc23aE"
+          abi: Copper
+          startBlock: 13444363
+        #   startBlock: 0
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.4
+          language: wasm/assemblyscript
+          entities:
+              - User
+          abis:
+              - name: Copper
+                file: ./build/contracts/Copper.json
+          eventHandlers:
+              - event: Transfer(indexed address,indexed address,uint256)
+                handler: handleTransfer
+          file: ./src/copper.ts
+    - kind: ethereum/contract
+      name: Gold
+      network: theta
+      source:
+          address: "0x23D084B9FAB97e220B8EC45f94a57854406990C1"
+          abi: Gold
+          startBlock: 13444363
+        #   startBlock: 0
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.4
+          language: wasm/assemblyscript
+          entities:
+              - User
+          abis:
+              - name: Gold
+                file: ./build/contracts/Gold.json
+          eventHandlers:
+              - event: Transfer(indexed address,indexed address,uint256)
+                handler: handleTransfer
+          file: ./src/gold.ts
+    - kind: ethereum/contract
+      name: Titanium
+      network: theta
+      source:
+          address: "0x39F2Ce799dFEbdD62482C203dA9677775D5DBB4c"
+          abi: Titanium
+          startBlock: 13444363
+        #   startBlock: 0
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.4
+          language: wasm/assemblyscript
+          entities:
+              - User
+          abis:
+              - name: Titanium
+                file: ./build/contracts/Titanium.json
+          eventHandlers:
+              - event: Transfer(indexed address,indexed address,uint256)
+                handler: handleTransfer
+          file: ./src/titanium.ts
